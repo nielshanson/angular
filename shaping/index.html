@@ -1,0 +1,22 @@
+<!DOCTYPE>
+<html ng-app="store">
+<head>
+  <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+  <body ng-controller="StoreController as store">
+    <!-- <div ng-show="!store.product.soldOut" ng-controller="StoreController as store"> -->
+    <ul class="list group">
+      <li class="list-group-item" ng-repeat="product in store.products">
+        <h3>
+          {{product.name}}
+          <em class="pull-right">{{product.price | currency }}</em>
+        </h3>
+    <!-- <div ng-repeat= "product in store.products" ng-hide="product.soldOut" >
+      <h1>Product Name: {{product.name}}</h1>
+      <h2>Product Price: ${{product.price}}</h2>
+      <p>Product Description: {{product.description}}</p>
+      <button ng-show="product.canPurchase"> Add to Cart </button>
+    </div> -->
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
