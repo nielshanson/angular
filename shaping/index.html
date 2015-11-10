@@ -1,22 +1,24 @@
 <!DOCTYPE>
 <html ng-app="store">
-<head>
-  <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" />
-  <body ng-controller="StoreController as store">
-    <!-- <div ng-show="!store.product.soldOut" ng-controller="StoreController as store"> -->
-    <ul class="list group">
-      <li class="list-group-item" ng-repeat="product in store.products">
-        <h3>
-          {{product.name}}
-          <em class="pull-right">{{product.price | currency }}</em>
-        </h3>
-    <!-- <div ng-repeat= "product in store.products" ng-hide="product.soldOut" >
-      <h1>Product Name: {{product.name}}</h1>
-      <h2>Product Price: ${{product.price}}</h2>
-      <p>Product Description: {{product.description}}</p>
-      <button ng-show="product.canPurchase"> Add to Cart </button>
-    </div> -->
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+  </head>
+  <body class="list-group ng-scope" ng-controller="StoreController as store">
+    <header>
+      <h1 class="text-center">Flatlander Crafted Gems</h1>
+      <h2 class="text-center">- an Angular store -</h2>
+    </header>
+    <div class="list-group">
+      <div class="list-group-item" ng-repeat="product in store.products">
+        <product-title></product-title>
+        <!-- Alternative: <h3 ng-include="'directives/product-title.html'"></h3>-->
+        <!-- Image Gallery  -->
+        <product-gallery></product-gallery>
+        <product-tabs></product-tabs>
+      </div>
+    </div>
     <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="js/products.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </body>
 </html>

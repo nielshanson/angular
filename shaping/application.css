@@ -1,0 +1,8 @@
+/* Makes form change color based on validation status*/
+.ng-invalid.ng-dirty {
+  border-color: red;
+}
+
+.ng-valid.ng-dirty {
+  border-color: green;
+}

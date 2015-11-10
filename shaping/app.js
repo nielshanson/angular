@@ -1,26 +1,29 @@
-
-
 (function () {
-  var app = angular.module('store', []);
+  var app = angular.module('store', ['store-directives']);
 
-  app.controller('StoreController', function() {
-    this.products = gems;
+  // Controllers
+  // app.controller("GalleryController", function() {
+  //   this.current = 0;
+  //   this.setCurrent = function(imageNumber) {
+  //     this.current = imageNumber || 0;
+  //   };
+  // });
+
+  app.controller('StoreController', [ '$http', function($http) {
+      var store = this;
+      store.products = [];
+      $http.get('data/store-products.json').success(function(data) {
+        store.products = data;
+      });
+  }]);
+
+  app.controller("ReviewController", function() {
+    this.review = {}
+    this.addReview = function(product) {
+      this.review.createdOn = Date.now();
+      product.reviews.push(this.review);
+      this.review = {};
+    };
   });
 
-  var gems = [
-    {
-      name: 'Dodecahedron',
-      price: 2.00,
-      description: "The Quick Brown Fox Jumpped Over the Lazy Dog.",
-      canPurchase: true,
-      soldOut:false
-    },
-    {
-      name: 'Prntagonal Gem',
-      price: 5.95,
-      description: "The Quick Brown Fox Jumpped Over the Lazy Dog.",
-      canPurchase: false,
-      soldOut:false
-    }
-  ];
 })(); // wrap entire application in closure
